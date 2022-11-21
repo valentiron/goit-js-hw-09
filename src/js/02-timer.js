@@ -12,6 +12,7 @@ const refs = {
     seconds: document.querySelector("[data-seconds]"),
 }
 
+refs.start.setAttribute("disabled", true)
 
 const options = {
   enableTime: true,
@@ -19,9 +20,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0]< Date.now) {
-     Notiflix.Notify.warning('Please choose a date in the future');
-     refs.start.setAttribute("disabled", true)
+    if (selectedDates[0]< Date.now()) {
+     Notiflix.Notify.failure('Please choose a date in the future');
     }
     refs.start.removeAttribute("disabled",)
   },
